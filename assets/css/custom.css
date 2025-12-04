@@ -1,3 +1,454 @@
 /*
-Custom Css
+==========================================
+    ProdArt - Custom CSS Mejorado
+    Tienda de Productos Artesanales
+==========================================
 */
+
+/* ========== Variables de Colores ========== */
+:root {
+    --primary-green: #059669;
+    --primary-dark: #047857;
+    --secondary-gold: #f59e0b;
+    --accent-coral: #f97316;
+    --dark-bg: #1f2937;
+    --light-bg: #f9fafb;
+    --text-dark: #111827;
+    --text-light: #6b7280;
+}
+
+/* ========== Estilos Generales ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* ========== Animaciones Personalizadas ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* ========== Navegación Mejorada ========== */
+#templatemo_nav_top {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%) !important;
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-light {
+    background: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    font-weight: 600;
+    color: var(--text-dark) !important;
+    position: relative;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-gold));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-link:hover {
+    color: var(--primary-green) !important;
+    transform: translateY(-2px);
+}
+
+.nav-icon {
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+}
+
+.nav-icon:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+.nav-icon i {
+    font-size: 1.3rem;
+}
+
+/* ========== Carrusel Hero Mejorado ========== */
+.carousel-item {
+    min-height: 500px;
+    background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+}
+
+.carousel-item img {
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transition: transform 0.5s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.05);
+}
+
+.carousel-item h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.carousel-item h3 {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.carousel-item p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--secondary-gold);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators li.active {
+    opacity: 1;
+    transform: scale(1.3);
+    background: var(--primary-green);
+}
+
+/* ========== Sección de Categorías ========== */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-gold));
+    border-radius: 2px;
+}
+
+.card-icon-border {
+    border: 2px solid var(--primary-green) !important;
+    border-radius: 50%;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(245, 158, 11, 0.1));
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(5, 150, 105, 0.15);
+}
+
+.card-icon-border:hover {
+    transform: translateY(-10px) rotate(5deg);
+    box-shadow: 0 15px 35px rgba(5, 150, 105, 0.25);
+    border-color: var(--secondary-gold) !important;
+}
+
+.card-icon-border i {
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ========== Cards de Productos Mejoradas ========== */
+.card {
+    border: none !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    background: #ffffff;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(5, 150, 105, 0.2);
+}
+
+.card img {
+    transition: all 0.5s ease;
+    height: 280px;
+    object-fit: cover;
+}
+
+.card:hover img {
+    transform: scale(1.15);
+    filter: brightness(0.9);
+}
+
+.card-body {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.card-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-gold));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-body::before {
+    transform: scaleX(1);
+}
+
+.card-body p {
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.card-body .text-muted {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-green) !important;
+}
+
+/* Badge de precio */
+.price-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+/* ========== Footer Mejorado ========== */
+#templatemo_footer {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: white;
+    padding-top: 3rem;
+}
+
+.footer-link-list li {
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.footer-link-list li:hover {
+    transform: translateX(10px);
+}
+
+.footer-link-list a {
+    color: #d1d5db;
+    transition: all 0.3s ease;
+}
+
+.footer-link-list a:hover {
+    color: var(--secondary-gold);
+}
+
+.footer-icons li {
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.3rem;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.1);
+}
+
+.footer-icons li:hover {
+    background: var(--primary-green);
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 8px 20px rgba(5, 150, 105, 0.4);
+}
+
+/* ========== Botones Mejorados ========== */
+.btn-success {
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-dark)) !important;
+    border: none !important;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+}
+
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+}
+
+/* ========== Modal de Búsqueda ========== */
+.modal-content {
+    border-radius: 20px !important;
+    border: none !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+}
+
+.form-control {
+    border-radius: 15px;
+    border: 2px solid #e5e7eb;
+    padding: 0.75rem 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.2rem rgba(5, 150, 105, 0.15);
+}
+
+/* ========== Sección de Características ========== */
+.feature-section {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    padding: 4rem 0;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ========== Efectos de Scroll ========== */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== Badge del Carrito ========== */
+.badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+    .carousel-item h1 {
+        font-size: 2rem;
+    }
+    
+    .carousel-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* ========== Utilidades ========== */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}

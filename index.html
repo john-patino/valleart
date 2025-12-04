@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name=" Haz crecer tu negocio a tu manera con ProdArt" content= "Sombreros,Mochilas,Hamacas,Bolsos." >
-    <title>ProdArt</title>
-    <!-- iconos-->
-    <link rel="apple-touch-icon" href="assets/img/">
-    <!-- css-->
-     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-     <link rel="stylesheet" href="assets/css/templatemo.css">
-     <link rel="stylesheet" href="assets/css/custom.css">
-     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <meta name="description" content="ProdArt - Tienda de productos artesanales colombianos. Sombreros, mochilas, hamacas, bolsos hechos a mano por artesanos locales." >
+    <title>ValleArt - Productos Artesanales Colombianos</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="assets/img/logo.png">
+    <link rel="icon" href="assets/img/logo.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 </head>
 <body>
-    <!-- inicio encabezado-->
+    <!-- Inicio Encabezado Superior -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
@@ -22,43 +23,45 @@
                     <i class="fa fa-envelope mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@prodart.com">info@prodart.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel: 057-320-202-02-02">057-320-202-02-02</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:057-320-202-02-02">057-320-202-02-02</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                 </div>
             </div>
-
         </div>
     </nav>
-    <!-- fin encabezado-->
-    <!-- inicio menu-->
-         <!-- Header -->
+    <!-- Fin Encabezado Superior -->
+
+    <!-- Inicio Menú de Navegación -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                ProdArt
+                ValleArt
             </a>
-            <!-- fecha -->
-            <script>
-                var f = new Date();
-                document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+
+            <!-- Fecha actual -->
+            <span class="text-muted d-none d-md-block">
+                <script>
+                    var f = new Date();
+                    document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
                 </script>
+            </span>
+
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="acercade.html">A cerca de</a>
+                            <a class="nav-link" href="acercade.html">Acerca de</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="compras.html">Compras</a>
@@ -74,7 +77,7 @@
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Buscar ...">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Buscar productos...">
                             <div class="input-group-text">
                                 <i class="fa fa-fw fa-search"></i>
                             </div>
@@ -85,213 +88,255 @@
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="compras.html">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span id="carrito-value" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                        <span id="carrito-value" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-success text-white"></span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span id="contador" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                        <span id="contador" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-success text-white"></span>
                     </a>
                 </div>
             </div>
-
         </div>
     </nav>
-<!-- fin menu-->
- <!-- Modal -->
- <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="w-100 pt-1 mb-5 text-right">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="" method="get" class="modal-content modal-body border-0 p-0">
-            <div class="input-group mb-2">
-                <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar ...">
-                <button type="submit" class="input-group-text bg-success text-light">
-                    <i class="fa fa-fw fa-search text-white"></i>
-                </button>
-                
-            </div>
-            <p><br>Escriba el producto a Buscar ...</p>
-        </form>
-    </div>
-</div>
+    <!-- Fin Menú de Navegación -->
 
-
-    <!-- inicio secciones-->
-<!-- carrusel -->
-<div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="assets/img/category_img_01.jpg" alt="">
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left align-self-center">
-                            <h1 class="h1 text-success"><b>ProdArt</b> eCommerce</h1>
-                            <h3 class="h2">La tienda de Productos Artesanales...</h3>
-                            <p>
-                                En ProdArt, somos un equipo apasionado por la artesanía y la cultura local.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Modal de Búsqueda -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="assets/img/category_img_03.jpg" alt="">
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
-                            <h1 class="h1">Accesorios</h1>
-                            <h3 class="h2">Línea de accesorios de la tienda.</h3>
-                            <p>
-                                
-                                 <strong></strong> 
-                            </p>
-                        </div>
-                    </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar productos artesanales...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
                 </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="assets/img/category_img_02.jpg" alt="">
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
-                            <h1 class="h1">Línea Hamacas</h1>
-                            <h3 class="h2">Hamacas hechas a mano. </h3>
-                            <p>
-                                 
-                                
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <p class="text-muted"><small>Escribe el nombre del producto que buscas: sombreros, mochilas, hamacas...</small></p>
+            </form>
         </div>
     </div>
-    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-        <i class="fas fa-chevron-left"></i>
-    </a>
-    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-        <i class="fas fa-chevron-right"></i>
-    </a>
-</div>
-<!-- fin carrusel -->
+
+    <!-- Carrusel Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="assets/img/category_img_01.jpg" alt="Productos Artesanales">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left align-self-center">
+                                <h1 class="h1"><span class="gradient-text">ProdArt</span> eCommerce</h1>
+                                <h3 class="h2">Artesanía Colombiana Auténtica</h3>
+                                <p>
+                                    Descubre la belleza de la artesanía colombiana hecha a mano por talentosos artesanos locales. 
+                                    Cada pieza cuenta una historia única y preserva nuestra rica tradición cultural.
+                                </p>
+                                <a href="productos.html" class="btn btn-success mt-3">Ver Productos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="assets/img/category_img_03.jpg" alt="Accesorios Artesanales">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1 gradient-text">Accesorios Únicos</h1>
+                                <h3 class="h2">Estilo y Tradición en Cada Detalle</h3>
+                                <p>
+                                    Mochilas wayuu, bolsos tejidos a mano, y accesorios únicos que reflejan la 
+                                    diversidad cultural de Colombia. Calidad excepcional y diseños auténticos.
+                                </p>
+                                <a href="productos.html" class="btn btn-success mt-3">Explorar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="assets/img/category_img_02.jpg" alt="Sombreros Vueltiao">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1 gradient-text">Sombreros Vueltiao</h1>
+                                <h3 class="h2">Símbolo Nacional Colombiano</h3>
+                                <p>
+                                    Sombreros vueltiao auténticos, patrimonio cultural de Colombia. Tejidos 
+                                    tradicionalmente por artesanos de las sabanas de Córdoba y Sucre.
+                                </p>
+                                <a href="productos.html" class="btn btn-success mt-3">Comprar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+    <!-- Fin Carrusel Hero -->
+
+    <!-- Sección de Categorías -->
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Categorías del mes...</h1>
-                <p>
-                    Esta son la categorias mas vendidas del mes de octubre.....
+                <h1 class="section-title">Categorías de Productos</h1>
+                <p class="text-muted">
+                    Explora nuestra selección de productos artesanales colombianos, 
+                    cada uno elaborado con dedicación y calidad excepcional.
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="compras.html"><img src="assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"> </a>
-                <h5 class="text-center mt-3 mb-3">Sombreros...</h5>
-                <p class="text-center"><a class="btn btn-success" href="compras.html">Ir a Comprar</a></p>
+                <a href="productos.html"><i class="fas fa-hat-cowboy fa-4x text-success mb-4 card-icon-border rounded-circle"></i></a>
+                <h5 class="text-success">Sombreros</h5>
+                <p class="text-muted mb-0">Sombreros vueltiao y artesanales de la más alta calidad</p>
             </div>
-        
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="compras.html"><img src="assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"> </a>
-                <h5 class="text-center mt-3 mb-3">Hamacas...</h5>
-                <p class="text-center"><a class="btn btn-success" href="compras.html">Ir a Comprar</a></p>
+                <a href="productos.html"><i class="fas fa-shopping-bag fa-4x text-success mb-4 card-icon-border rounded-circle"></i></a>
+                <h5 class="text-success">Bolsos y Mochilas</h5>
+                <p class="text-muted mb-0">Mochilas wayuu y bolsos tejidos con técnicas ancestrales</p>
             </div>
-        
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="compras.html"><img src="assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"> </a>
-                <h5 class="text-center mt-3 mb-3">Accesorios...</h5>
-                <p class="text-center"><a class="btn btn-success" href="compras.html">Ir a Comprar</a></p>
+                <a href="productos.html"><i class="fas fa-couch fa-4x text-success mb-4 card-icon-border rounded-circle"></i></a>
+                <h5 class="text-success">Hamacas</h5>
+                <p class="text-muted mb-0">Hamacas tradicionales tejidas a mano, perfectas para el descanso</p>
             </div>
         </div>
-
-
     </section>
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
+    <!-- Fin Sección de Categorías -->
+
+    <!-- Sección de Productos Destacados -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row text-center pt-3 pb-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Productos destacados...</h1>
-                    <p>
-                        Los productos destacados del mes son:
+                    <h1 class="section-title">Productos Destacados</h1>
+                    <p class="text-muted">
+                        Los favoritos de nuestros clientes. Calidad garantizada y envío seguro.
                     </p>
                 </div>
             </div>
         
-        <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="compras.html">
-                        <img src="assets/img/feature_prod_01.jpg" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li class="text-muted text-right">$250.000</li>
-                        </ul>
-                        <p>
-                            Sombrero vueltiao, hecho a mano...
-                        </p>
-                        <p class="text-muted">Vistas (30)</p>
+            <div class="row">
+                <!-- Producto 1 -->
+                <div class="col-12 col-md-4 mb-4 scroll-animate">
+                    <div class="card h-100">
+                        <a href="compras.html">
+                            <img src="assets/img/feature_prod_01.jpg" class="card-img-top" alt="Sombrero Vueltiao">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-dark font-weight-bold">Sombrero Vueltiao Tradicional</h5>
+                            <p class="text-muted">
+                                Auténtico sombrero vueltiao tejido a mano en las sabanas de Córdoba. 
+                                Símbolo cultural de Colombia.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-between align-items-center">
+                                <li>
+                                    <span class="price-badge">$250.000 COP</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </li>
+                            </ul>
+                            <p class="text-muted"><small><i class="fas fa-eye"></i> 30 vistas</small></p>
+                        </div>
                     </div>
-
                 </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="compras.html">
-                        <img src="assets/img/feature_prod_02.jpg" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li class="text-muted text-right">$250.000</li>
-                        </ul>
-                        <p>
-                            Sombrero vueltiao, hecho a mano...
-                        </p>
-                        <p class="text-muted">Vistas (30)</p>
-                    </div>
 
+                <!-- Producto 2 -->
+                <div class="col-12 col-md-4 mb-4 scroll-animate">
+                    <div class="card h-100">
+                        <a href="compras.html">
+                            <img src="assets/img/feature_prod_02.jpg" class="card-img-top" alt="Sombrero Premium">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-dark font-weight-bold">Sombrero Vueltiao Premium</h5>
+                            <p class="text-muted">
+                                Sombrero de alta gama con 21 vueltas, ideal para ocasiones especiales. 
+                                Elaboración artesanal de lujo.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-between align-items-center">
+                                <li>
+                                    <span class="price-badge">$450.000 COP</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </li>
+                            </ul>
+                            <p class="text-muted"><small><i class="fas fa-eye"></i> 45 vistas</small></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="compras.html">
-                        <img src="assets/img/feature_prod_01.jpg" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li class="text-muted text-right">$250.000</li>
-                        </ul>
-                        <p>
-                            Sombrero vueltiao, hecho a mano...
-                        </p>
-                        <p class="text-muted">Vistas (30)</p>
-                    </div>
 
+                <!-- Producto 3 -->
+                <div class="col-12 col-md-4 mb-4 scroll-animate">
+                    <div class="card h-100">
+                        <a href="compras.html">
+                            <img src="assets/img/feature_prod_03.jpg" class="card-img-top" alt="Mochila Wayuu">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-dark font-weight-bold">Mochila Wayuu Colorida</h5>
+                            <p class="text-muted">
+                                Mochila tradicional wayuu con diseños geométricos únicos. 
+                                Tejida por artesanas de La Guajira.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-between align-items-center">
+                                <li>
+                                    <span class="price-badge">$180.000 COP</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                </li>
+                            </ul>
+                            <p class="text-muted"><small><i class="fas fa-eye"></i> 38 vistas</small></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    <!-- Fin Sección de Productos Destacados -->
 
-     <!-- fin secciones-->
-
-    <!-- inicio de pie-->
+    <!-- Footer -->
     <footer class="bg-dark" id="templatemo_footer">
         <div class="container">
             <div class="row">
@@ -300,15 +345,14 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            Local principal - Bogotá - Colombia
+                            Bogotá, Colombia
                         </li>
-
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel: 057-320-202-02-02">057-320-202-02-02</a>
+                            <a class="text-decoration-none" href="tel:057-320-202-02-02">057-320-202-02-02</a>
                         </li>
                         <li>
-                            <i class="fa fa-envelope mx-2"></i>
+                            <i class="fa fa-envelope fa-fw"></i>
                             <a class="text-decoration-none" href="mailto:info@prodart.com">info@prodart.com</a>
                         </li>
                     </ul>
@@ -316,21 +360,21 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="compras.html">Sombreros</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Hamacas</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Sombreros Vueltiao</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Mochilas Wayuu</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Hamacas Artesanales</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Bolsos Tejidos</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Platería</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Bolsos</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Mochilas</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Tapetes</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Mas información</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Información</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Home</a></li>
-                        <li><a class="text-decoration-none" href="acercade.html">A cerca de</a></li>
+                        <li><a class="text-decoration-none" href="index.html">Inicio</a></li>
+                        <li><a class="text-decoration-none" href="acercade.html">Acerca de Nosotros</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Compras</a></li>
-                        <li><a class="text-decoration-none" href="productos.html">Productos</a></li>
+                        <li><a class="text-decoration-none" href="productos.html">Catálogo</a></li>
                         <li><a class="text-decoration-none" href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
@@ -351,38 +395,54 @@
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
                         </li>
-                        
                     </ul>
                 </div>
                 <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Escriba su Email</label>
+                    <label class="sr-only" for="subscribeEmail">Correo Electrónico</label>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribirse</div>
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Tu correo electrónico">
+                        <div class="input-group-text btn-success text-light">Suscribirse</div>
                     </div>
                 </div>
             </div>
-
-
         </div>
+
         <div class="w-100 bg-black py-3">
             <div class="container">
                 <div class="row pt-2">
-                    <p class="text-left text-light">
-                        Copyright &copy; 2024 - ProdArt | Diseñado por: Pablo Carr
+                    <p class="text-center text-light">
+                        Copyright &copy; 2024 ProdArt | Artesanía Colombiana Auténtica | Diseñado por Pablo Carr
                     </p>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- fin de pie-->
-        <!-- archivos js-->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-        <script src="assets/js/jquery-1.11.0.min.js"></script>
-        <script src="assets/js/templatemo.js"></script>
-        <script src="assets/js/custom.js"></script>
-        <script src="assets/js/carrito.js"></script>
+    <!-- Fin Footer -->
 
+    <!-- Archivos JavaScript -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/carrito.js"></script>
+
+    <!-- Script para animaciones al hacer scroll -->
+    <script>
+        // Animación de elementos al hacer scroll
+        function checkScroll() {
+            const elements = document.querySelectorAll('.scroll-animate');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
 </body>
 </html>
