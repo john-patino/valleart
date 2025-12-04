@@ -1,215 +1,916 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProdArt-Compras</title>
-    <!-- iconos-->
-    <link rel="apple-touch-icon" href="assets/img/">
-    <!-- css-->
-     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-     <link rel="stylesheet" href="assets/css/templatemo.css">
-     <link rel="stylesheet" href="assets/css/custom.css">
-     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <meta name="description" content="Carrito de compras - ProdArt. Explora y compra productos artesanales colombianos auténticos.">
+    <title>ProdArt - Carrito de Compras</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="assets/img/logo.png">
+    <link rel="icon" href="assets/img/logo.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    
+    <style>
+        /* ========== Estilos Específicos del Módulo de Compras ========== */
+        
+        /* Breadcrumb moderno */
+        .breadcrumb-custom {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb-custom .breadcrumb {
+            margin-bottom: 0;
+            background: transparent;
+        }
+        
+        .breadcrumb-custom .breadcrumb-item + .breadcrumb-item::before {
+            content: "→";
+            color: #059669;
+        }
+        
+        /* Sidebar de filtros mejorado */
+        .filter-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .filter-sidebar h2 {
+            color: #059669;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .filter-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+        
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+        
+        .filter-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .filter-section h3:hover {
+            color: #059669;
+        }
+        
+        .filter-section h3 i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .filter-section h3.collapsed i {
+            transform: rotate(-90deg);
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-option:hover {
+            padding-left: 10px;
+            color: #059669;
+        }
+        
+        .filter-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #059669;
+        }
+        
+        /* Select de filtro mejorado */
+        .filter-select-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-select-wrapper select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            font-weight: 600;
+            color: #1f2937;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23059669' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+        
+        .filter-select-wrapper select:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+        
+        /* Grid de productos mejorado */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* Card de producto mejorada */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(5, 150, 105, 0.2);
+        }
+        
+        .product-card .badge-discount {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+        
+        .product-card .image-container {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .product-card .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .image-container img {
+            transform: scale(1.15);
+        }
+        
+        .product-card .quick-actions {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .quick-actions {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
+        .quick-actions .btn-quick {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .quick-actions .btn-quick:hover {
+            background: #059669;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .product-card .card-body {
+            padding: 1.5rem;
+        }
+        
+        .product-card .product-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 48px;
+        }
+        
+        .product-card .product-category {
+            font-size: 0.85rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .product-card .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .product-card .product-rating i {
+            color: #f59e0b;
+            font-size: 0.9rem;
+        }
+        
+        .product-card .product-rating span {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin-left: 5px;
+        }
+        
+        .product-card .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .product-card .price-current {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #059669;
+        }
+        
+        .product-card .price-original {
+            font-size: 1rem;
+            color: #9ca3af;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+        
+        .product-card .btn-add-cart {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #059669, #047857);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .product-card .btn-add-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+        }
+        
+        .product-card .btn-add-cart i {
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card .btn-add-cart:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* Carrito lateral sticky mejorado */
+        .cart-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .cart-sidebar::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 10px;
+        }
+        
+        .cart-sidebar::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 10px;
+        }
+        
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+        
+        .cart-header h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-header .cart-count {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .cart-empty i {
+            font-size: 4rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+        
+        .cart-empty p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+        
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+        
+        .cart-item {
+            background: #f9fafb;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item:hover {
+            background: #f3f4f6;
+            transform: translateX(-5px);
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        
+        .cart-item-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .cart-item-price {
+            font-size: 0.95rem;
+            color: #059669;
+            font-weight: 700;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 0.5rem;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 6px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #6b7280;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .quantity-btn:hover {
+            border-color: #059669;
+            color: #059669;
+            background: #f0fdf4;
+        }
+        
+        .quantity-value {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1f2937;
+            min-width: 25px;
+            text-align: center;
+        }
+        
+        .cart-item-remove {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            border-radius: 8px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .cart-item-remove:hover {
+            background: #dc2626;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .cart-summary {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .cart-summary-row.subtotal {
+            color: #6b7280;
+        }
+        
+        .cart-summary-row.shipping {
+            color: #6b7280;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .cart-summary-row.shipping .free-badge {
+            background: #dcfce7;
+            color: #059669;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        
+        .cart-summary-row.total {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+        }
+        
+        .cart-summary-row.total .price {
+            color: #059669;
+        }
+        
+        .cart-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .btn-checkout {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #059669, #047857);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-checkout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+        }
+        
+        .btn-clear-cart {
+            width: 100%;
+            padding: 0.75rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            color: #6b7280;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-clear-cart:hover {
+            border-color: #dc2626;
+            color: #dc2626;
+            background: #fee2e2;
+        }
+        
+        /* Toast de notificación */
+        .toast-notification {
+            position: fixed;
+            top: 100px;
+            right: -400px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 9999;
+            transition: right 0.4s ease;
+            max-width: 350px;
+        }
+        
+        .toast-notification.show {
+            right: 20px;
+        }
+        
+        .toast-notification.success {
+            border-left: 4px solid #059669;
+        }
+        
+        .toast-notification .toast-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #059669;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .toast-notification .toast-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0 0 0.25rem 0;
+        }
+        
+        .toast-notification .toast-content p {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        /* Animación de agregado al carrito */
+        @keyframes addToCart {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .product-card.adding {
+            animation: addToCart 0.6s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .cart-sidebar {
+                position: relative;
+                top: 0;
+                margin-top: 2rem;
+            }
+            
+            .filter-sidebar {
+                position: relative;
+                top: 0;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toast-notification {
+                max-width: calc(100% - 40px);
+            }
+        }
+    </style>
 </head>
 <body>
-        <!-- inicio encabezado-->
-        <nav class="navbar navbar-expand-lg bg-dark navbar-light" id="templatemo_nav_top">
-            <div class="container text-light">
-                <div class="w-100 d-flex justify-content-between">
-                    <div>
-                        <i class="fa fa-envelope mx-2"></i>
-                        <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@prodart.com">info@prodart.com</a>
-                        <i class="fa fa-phone mx-2"></i>
-                        <a class="navbar-sm-brand text-light text-decoration-none" href="tel: 057-320-202-02-02">057-320-202-02-02</a>
-                    </div>
-                    <div>
-                        <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                        <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                        <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    </div>
+    <!-- Inicio Encabezado Superior -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@prodart.com">info@prodart.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:057-320-202-02-02">057-320-202-02-02</a>
                 </div>
-    
-            </div>
-        </nav>
-        <!-- fin encabezado-->
-        <!-- inicio menu-->
-        <nav class="navbar navbar-expand-lg navbar-light shadow">
-            <div class="container d-flex justify-content-between align-items-center">
-    
-                <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                    ProdArt
-                </a>
-    
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                    <div class="flex-fill">
-                        <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="acercade.html">A cerca de</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="compras.html">Compras</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="productos.html">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contacto.html">Contacto</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="navbar align-self-center d-flex">
-                        <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="inputMobileSearch" placeholder="Buscar ...">
-                                <div class="input-group-text">
-                                    <i class="fa fa-fw fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                            <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                        </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
-                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                            <span id="carrito-value" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
-                        </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            <span id="contador" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
-                        </a>
-                    </div>
+                <div>
+                    <a class="text-light" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                 </div>
-    
             </div>
-        </nav>
-    <!-- fin menu-->
-<!-- inicio de contenido -->
-<div class="container py-5">
-    <div class="row">
-
-        <div class="col-lg-3">
-            <h1 class="h2 pb-4">Categorias</h1>
-            <ul class="list-unstyled templatemo-accordion">
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Genero
-                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul class="collapse show list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#"><details>
-                            <summary>Hombres</summary>
-                            <p>Nuestras colecciones están diseñadas para todos</p>
-                        </details></a></li>
-                        <li><a class="text-decoration-none" href="#"><details>
-                            <summary>Mujeres</summary>
-                            <p>Descubre los sombreros para mujer ideales para cada temporada del año.</p>
-                        </details></a></li>
-                    </ul>
-                </li>
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Ventas
-                        <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#"><details>
-                            <summary>Ventas</summary>
-                            <p>Envíos Gratis en el día ✓ Compre Sombrero en cuotas sin interés! ✓ Conozca nuestras increíbles ofertas y promociones en millones de ✓ productos.</p>
-                        </details></a></li>
-                        
-                    </ul>
-                </li>
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Productos
-                        <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#"><details>
-                            <summary>Productos</summary>
-                            <p>En ProdArt, la calidad en nuestros productos es una obligación.</p>
-                        </details></a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
         </div>
+    </nav>
+    <!-- Fin Encabezado Superior -->
 
-        <div class="col-lg-9">
-            <div class="row">
+    <!-- Inicio Menú de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+                ProdArt
+            </a>
 
-                <div class="col-md-6 pb-4">
-                    <div class="d-flex">
-                        <select id="filtro" class="form-control">
-                            <option value="todas">Todas</option>
-                            <option value="sombreros">Sombreros</option>
-                            <option value="mochilas">Mochilas</option>
-                            <option value="bolsos">Bolsos</option>
-                            <option value="hamacas">Hamacas</option>
-                            <option value="plateria">Platería</option>
-                            <option value="tapetes">Tapetes</option>
-                            
-                        </select>
-                    </div>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="acercade.html">Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="compras.html">Compras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <a class="nav-icon position-relative text-decoration-none" href="compras.html">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span id="carrito-value" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-success text-white">0</span>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <span id="contador" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-success text-white"></span>
+                    </a>
                 </div>
             </div>
-            <!-- productos en el carro -->
-            <!-- fin de productos -->
-             <!-- carrito -->
-             <div class="container">
-                <div class="row">
-                    <!-- Elementos generados a partir del JSON -->
-                    <main id="items" class="col-sm-8 row"></main>
-                    <!-- Carrito -->
-                    <aside class="col-sm-4">
-                        <h3>Carrito</h3>
-                        <!-- Elementos del carrito -->
-                        <ul id="carrito" class="list-group"></ul>
-                        <hr>
-                        <!-- Precio total -->
-                        <p class="text-right">Total: $ <span id="total"></span></p>
-                        <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-                        <button class="btn btn-info">
-                        <a href="pago.html" target="target_blank">Pagar</a>
-                        </button>
-                        <button class="btn btn-info">
-                        <a href="https://www.paypal.com/invoice/p/#X9AMTLCL84389TKX" target="target_blank">Pagar</a>
-                        </button>
-        
-                    </aside>
-                </div>
-            </div>
-<!-- paginacion -->
-            <div class="row">
-                <ul class="pagination pagination-lg justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
-                    </li>
-                </ul>
-            </div>
+        </div>
+    </nav>
+    <!-- Fin Menú de Navegación -->
 
+    <!-- Breadcrumb -->
+    <div class="container mt-4">
+        <div class="breadcrumb-custom">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Compras</li>
+                </ol>
+            </nav>
+            <h1 class="h2 mb-0">🛍️ Explora Nuestra Colección</h1>
+            <p class="text-muted mb-0">Descubre productos artesanales colombianos auténticos</p>
         </div>
     </div>
-</div>
-<!-- final de contenido -->
 
+    <!-- Contenido Principal -->
+    <div class="container py-4">
+        <div class="row">
+            <!-- Sidebar de Filtros -->
+            <div class="col-lg-3">
+                <div class="filter-sidebar">
+                    <h2><i class="fas fa-filter"></i> Filtros</h2>
+                    
+                    <!-- Filtro por categoría -->
+                    <div class="filter-select-wrapper">
+                        <label class="form-label fw-bold text-muted small">CATEGORÍA</label>
+                        <select id="filtro" class="form-select">
+                            <option value="todas">Todas las categorías</option>
+                            <option value="sombreros">🎩 Sombreros</option>
+                            <option value="mochilas">🎒 Mochilas</option>
+                            <option value="bolsos">👜 Bolsos</option>
+                            <option value="hamacas">🛏️ Hamacas</option>
+                            <option value="plateria">💍 Platería</option>
+                            <option value="tapetes">🧶 Tapetes</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Filtro por género -->
+                    <div class="filter-section">
+                        <h3>
+                            Género
+                            <i class="fas fa-chevron-down"></i>
+                        </h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="hombres">
+                                <span>Hombres</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="mujeres">
+                                <span>Mujeres</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="unisex">
+                                <span>Unisex</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Información adicional -->
+                    <div class="filter-section">
+                        <div style="background: linear-gradient(135deg, #dcfce7, #bbf7d0); padding: 1.5rem; border-radius: 15px;">
+                            <h4 style="color: #059669; font-weight: 800; margin-bottom: 0.5rem;">🚚 Envío Gratis</h4>
+                            <p style="color: #047857; font-size: 0.9rem; margin: 0;">En compras superiores a $200.000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 1.5rem; border-radius: 15px;">
+                            <h4 style="color: #f59e0b; font-weight: 800; margin-bottom: 0.5rem;">✨ Productos Únicos</h4>
+                            <p style="color: #d97706; font-size: 0.9rem; margin: 0;">100% artesanía colombiana hecha a mano</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Área de Productos y Carrito -->
+            <div class="col-lg-9">
+                <div class="row">
+                    <!-- Productos -->
+                    <div class="col-lg-8">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="mb-0"><strong id="productos-count">6</strong> Productos Disponibles</h3>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-success active">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-success">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Grid de Productos -->
+                        <div id="items" class="products-grid"></div>
+                    </div>
 
-        <!-- inicio de pie-->
+                    <!-- Carrito Lateral -->
+                    <div class="col-lg-4">
+                        <div class="cart-sidebar">
+                            <div class="cart-header">
+                                <h3>
+                                    🛒 Carrito
+                                    <span class="cart-count" id="cart-count">0</span>
+                                </h3>
+                            </div>
+                            
+                            <!-- Mensaje de carrito vacío -->
+                            <div id="cart-empty" class="cart-empty">
+                                <i class="fas fa-shopping-cart"></i>
+                                <p>Tu carrito está vacío</p>
+                                <small class="text-muted">¡Agrega productos para comenzar!</small>
+                            </div>
+                            
+                            <!-- Lista de items del carrito -->
+                            <ul id="carrito" class="cart-items" style="display: none;"></ul>
+                            
+                            <!-- Resumen del carrito -->
+                            <div id="cart-summary" class="cart-summary" style="display: none;">
+                                <div class="cart-summary-row subtotal">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotal">$0</span>
+                                </div>
+                                <div class="cart-summary-row shipping">
+                                    <span>Envío:</span>
+                                    <span class="free-badge">GRATIS</span>
+                                </div>
+                                <div class="cart-summary-row total">
+                                    <span>Total:</span>
+                                    <span class="price">$<span id="total">0</span></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Acciones del carrito -->
+                            <div id="cart-actions" class="cart-actions" style="display: none;">
+                                <button class="btn-checkout" onclick="window.location.href='pago.html'">
+                                    <i class="fas fa-lock"></i>
+                                    Proceder al Pago
+                                </button>
+                                <button id="boton-vaciar" class="btn-clear-cart">
+                                    <i class="fas fa-trash-alt"></i> Vaciar Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de notificación -->
+    <div id="toast" class="toast-notification success">
+        <div class="toast-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <div class="toast-content">
+            <h4>¡Producto agregado!</h4>
+            <p>El producto se añadió a tu carrito</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="bg-dark" id="templatemo_footer">
         <div class="container">
             <div class="row">
@@ -218,15 +919,14 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            Local principal - Bogotá - Colombia
+                            Bogotá, Colombia
                         </li>
-
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel: 057-320-202-02-02">057-320-202-02-02</a>
+                            <a class="text-decoration-none" href="tel:057-320-202-02-02">057-320-202-02-02</a>
                         </li>
                         <li>
-                            <i class="fa fa-envelope mx-2"></i>
+                            <i class="fa fa-envelope fa-fw"></i>
                             <a class="text-decoration-none" href="mailto:info@prodart.com">info@prodart.com</a>
                         </li>
                     </ul>
@@ -234,21 +934,19 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="compras.html">Sombreros</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Sombreros Vueltiao</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Mochilas Wayuu</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Hamacas</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Platería</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Bolsos</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Mochilas</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Tapetes</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Platería</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Mas información</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Información</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Home</a></li>
-                        <li><a class="text-decoration-none" href="acercade.html">A cerca de</a></li>
+                        <li><a class="text-decoration-none" href="index.html">Inicio</a></li>
+                        <li><a class="text-decoration-none" href="acercade.html">Acerca de</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Compras</a></li>
-                        <li><a class="text-decoration-none" href="productos.html">Productos</a></li>
                         <li><a class="text-decoration-none" href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
@@ -269,35 +967,28 @@
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
                         </li>
-                        
                     </ul>
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Escriba su Email</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribirse</div>
-                    </div>
                 </div>
             </div>
         </div>
+
         <div class="w-100 bg-black py-3">
             <div class="container">
                 <div class="row pt-2">
-                    <p class="text-left text-light">
-                        Copyright &copy; 2024 - ProdArt | Diseñado por: Pablo Carr
+                    <p class="text-center text-light">
+                        Copyright &copy; 2024 ProdArt | Artesanía Colombiana Auténtica
                     </p>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- fin de pie-->
-    <!-- archivos js-->
-     <script src="assets/js/bootstrap.bundle.min.js"></script>
-     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-     <script src="assets/js/jquery-1.11.0.min.js"></script>
-     <script src="assets/js/templatemo.js"></script>
-     <script src="assets/js/custom.js"></script>
-     <script src="assets/js/carrito.js"></script>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/carrito-mejorado.js"></script>
 </body>
 </html>
